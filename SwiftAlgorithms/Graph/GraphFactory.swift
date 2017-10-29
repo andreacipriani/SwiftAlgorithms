@@ -4,26 +4,32 @@ class GraphFactory {
 
 /*
      It creates this graph:
-     https://en.wikipedia.org/wiki/Tree_traversal#/media/File:Sorted_binary_tree_preorder.svg
+               +---+
+               | A |
+               +---+
+               |   |
+           +---+   +---+   +---+
+           | B |   | C | - | F |
+           +---+   +---+   +---+
+                   |   |
+               +---+   +---+
+               | D |   | E |
+               +---+   +---+
  */
 
     static func makeGraph() -> Graph {
         let graph = Graph()
 
-        let nodesForIds = "ABCDEFGHI".characters.map{ Node(id: String($0)) }.reduce([String: Node]()) {
+        let nodesForIds = "ABCDEF".characters.map{ Node(id: String($0)) }.reduce([String: Node]()) {
             var mutableResult = $0
             mutableResult[$1.id] = $1
             return mutableResult
         }
-        graph.add(edge: edge(from: "F", to: "B", in: nodesForIds))
-        graph.add(edge: edge(from: "F", to: "G", in: nodesForIds))
-        graph.add(edge: edge(from: "B", to: "A", in: nodesForIds))
-        graph.add(edge: edge(from: "B", to: "D", in: nodesForIds))
-        graph.add(edge: edge(from: "D", to: "C", in: nodesForIds))
-        graph.add(edge: edge(from: "D", to: "E", in: nodesForIds))
-        graph.add(edge: edge(from: "G", to: "I", in: nodesForIds))
-        graph.add(edge: edge(from: "I", to: "H", in: nodesForIds))
-
+        graph.add(edge: edge(from: "A", to: "B", in: nodesForIds))
+        graph.add(edge: edge(from: "A", to: "C", in: nodesForIds))
+        graph.add(edge: edge(from: "C", to: "D", in: nodesForIds))
+        graph.add(edge: edge(from: "C", to: "E", in: nodesForIds))
+        graph.add(edge: edge(from: "C", to: "F", in: nodesForIds))
         return graph
     }
 
@@ -33,4 +39,3 @@ class GraphFactory {
         return Edge(source: sourceNode, destination: destinationNode)
     }
 }
-

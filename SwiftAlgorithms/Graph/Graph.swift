@@ -1,6 +1,6 @@
 import Foundation
 
-class Graph: CustomStringConvertible {
+class Graph {
 
     private var nodes: Set<Node> = Set([])
     private var edges: [Edge] = []
@@ -9,15 +9,6 @@ class Graph: CustomStringConvertible {
         nodes.insert(edge.source)
         nodes.insert(edge.destination)
         edges.append(edge)
-    }
-
-    func visit(node: Node) {
-        guard let index = nodes.index(of: node) else {
-            print("Node \(node) not found")
-            return
-        }
-        print("Visiting \(node)")
-        nodes[index].visit()
     }
 
     func edges(of node: Node) -> [Edge] {
@@ -29,6 +20,27 @@ class Graph: CustomStringConvertible {
             $0.description < $1.description
         }
     }
+
+    func depthFirstVisitPreOrder(from node: Node) {
+        node.visit()
+        edges(of: node).forEach { edge in
+            let destination = edge.destination
+            if !destination.isVisited {
+                depthFirstVisitPreOrder(from: destination)
+            }
+        }
+    }
+
+    func depthFirstVisitPostOrder(from node: Node) {
+        edges(of: node).forEach { edge in
+            let destination = edge.destination
+            depthFirstVisitPostOrder(from: destination)
+        }
+        node.visit()
+    }
+}
+
+extension Graph: CustomStringConvertible {
 
     var visitedNodesDescription: String {
         return sortedNodes.reduce("Nodes: ", {$0 + $1.visitedDescription + "; "})
@@ -52,26 +64,5 @@ class Graph: CustomStringConvertible {
         }
         return mutableDescription
     }
-
-    func depthFirstVisitInOrder(node: Node) {
-
-    }
-
-    func depthFirstVisitPreOrder(node: Node) {
-        visit(node: node)
-        edges(of: node).forEach { edge in
-            let destination = edge.destination
-            if !destination.isVisited {
-                depthFirstVisitPreOrder(node: destination)
-            }
-        }
-    }
-
-    func depthFirstVisitPostOrder(node: Node) {
-        edges(of: node).forEach { edge in
-            let destination = edge.destination
-            depthFirstVisitPostOrder(node: destination)
-        }
-        visit(node: node)
-    }
 }
+

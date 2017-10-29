@@ -14,6 +14,7 @@ class Node: Hashable, CustomStringConvertible {
         if isVisited {
             print("\(description) was already visited")
         }
+        print("Visiting \(self.id)")
         isVisited = true
     }
 
