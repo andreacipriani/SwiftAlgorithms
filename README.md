@@ -1,8 +1,7 @@
 # SwiftAlgorithms
 
 - Graphs:
-  - depth first visit pre order
-  - depth first visit post order
+  - depth first visit
 - Binary Trees:
   - depth first visit pre order
   - depth first visit in order
