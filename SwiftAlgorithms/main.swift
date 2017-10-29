@@ -36,6 +36,7 @@ class Node: Hashable, CustomStringConvertible {
 }
 
 struct Edge: Hashable, CustomStringConvertible {
+
     let source: Node
     let destination: Node
 
@@ -82,28 +83,6 @@ class Graph: CustomStringConvertible {
         }
     }
 
-    static func create() -> Graph {
-        let graph = Graph()
-        let f = Node(id: "F")
-        let b = Node(id: "B")
-        let a = Node(id: "A")
-        let d = Node(id: "D")
-        let c = Node(id: "C")
-        let e = Node(id: "E")
-        let g = Node(id: "G")
-        let i = Node(id: "I")
-        let h = Node(id: "H")
-        graph.add(edge: Edge(source: f, destination: b))
-        graph.add(edge: Edge(source: f, destination: g))
-        graph.add(edge: Edge(source: b, destination: a))
-        graph.add(edge: Edge(source: b, destination: d))
-        graph.add(edge: Edge(source: d, destination: c))
-        graph.add(edge: Edge(source: d, destination: e))
-        graph.add(edge: Edge(source: g, destination: i))
-        graph.add(edge: Edge(source: g, destination: h))
-        return graph
-    }
-
     var visitedNodesDescription: String {
         return sortedNodes.reduce("Nodes: ", {$0 + $1.visitedDescription + "; "})
     }
@@ -127,20 +106,53 @@ class Graph: CustomStringConvertible {
         return mutableDescription
     }
 
+    func depthFirstVisitInOrder(node: Node) {
+
+    }
+
     func depthFirstVisitPreOrder(node: Node) {
-        //print("fun called on \(node)")
         visit(node: node)
         edges(of: node).forEach { edge in
             let destination = edge.destination
-            //print("\(edge)")
             if !destination.isVisited {
-                //print("Destination is not visited, recursive call")
                 depthFirstVisitPreOrder(node: destination)
             }
-            //print("Destination is visited - end of procedure")
         }
+    }
+
+    func depthFirstVisitPostOrder(node: Node) {
+        edges(of: node).forEach { edge in
+            let destination = edge.destination
+            depthFirstVisitPostOrder(node: destination)
+        }
+        visit(node: node)
     }
 }
 
-let graph = Graph.create()
-graph.depthFirstVisitPreOrder(node: Node(id: "F"))
+class GraphFactory {
+
+    static func makeGraph() -> Graph {
+        let graph = Graph()
+        let f = Node(id: "F")
+        let b = Node(id: "B")
+        let a = Node(id: "A")
+        let d = Node(id: "D")
+        let c = Node(id: "C")
+        let e = Node(id: "E")
+        let g = Node(id: "G")
+        let i = Node(id: "I")
+        let h = Node(id: "H")
+        graph.add(edge: Edge(source: f, destination: b))
+        graph.add(edge: Edge(source: f, destination: g))
+        graph.add(edge: Edge(source: b, destination: a))
+        graph.add(edge: Edge(source: b, destination: d))
+        graph.add(edge: Edge(source: d, destination: c))
+        graph.add(edge: Edge(source: d, destination: e))
+        graph.add(edge: Edge(source: g, destination: i))
+        graph.add(edge: Edge(source: i, destination: h))
+        return graph
+    }
+}
+
+let graph = GraphFactory.makeGraph()
+graph.depthFirstVisitPostOrder(node: Node(id: "F"))
