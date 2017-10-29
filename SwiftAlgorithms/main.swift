@@ -2,8 +2,7 @@ import Foundation
 
 //let graph = GraphFactory.makeGraph()
 //let graphRoot = Node(id: "A")
-//graph.depthFirstVisitPreOrder(from: graphRoot)  // A,B,C,D,E,F
-//graph.depthFirstVisitPostOrder(from: graphRoot) // B,D,E,F,C,A
+//graph.depthFirstVisit(from: graphRoot)  // A,B,C,D,E,F
 
 //let tree = BinaryTreeFactory.makeSortedBinaryTree()
 //tree.depthFirstVisitPreOrder(node: tree.root)    // F,B,A,D,C,E,G,I,H

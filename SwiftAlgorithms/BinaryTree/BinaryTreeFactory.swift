@@ -18,9 +18,9 @@ class BinaryTreeFactory {
      | A |   | D |          | I |
      +---+   +---+          +---+
              |   |          |
-         +---+   +---+ +---+
-         | C |   | E | | H |
-         +---+   +---+ +---+
+         +---+   +---+    +---+
+         | C |   | E |    | H |
+         +---+   +---+    +---+
      */
 
     static func makeSortedBinaryTree() -> BinaryTree {

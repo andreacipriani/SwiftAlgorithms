@@ -21,7 +21,7 @@ class Graph {
         }
     }
 
-    func depthFirstVisitPreOrder(from node: Node) {
+    func depthFirstVisit(from node: Node) {
         node.visit()
         edges(of: node).forEach { edge in
             let destination = edge.destination
@@ -29,14 +29,6 @@ class Graph {
                 depthFirstVisitPreOrder(from: destination)
             }
         }
-    }
-
-    func depthFirstVisitPostOrder(from node: Node) {
-        edges(of: node).forEach { edge in
-            let destination = edge.destination
-            depthFirstVisitPostOrder(from: destination)
-        }
-        node.visit()
     }
 }
 
