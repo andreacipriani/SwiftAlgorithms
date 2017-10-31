@@ -34,7 +34,10 @@ class TimeComplexityCalculator {
         var rangeDiff: Int!
 
         operationForComplexities.keys.forEach { complexity in
-            rangeDiff = abs(n - operationForComplexities[complexity]!)
+            rangeDiff = n - operationForComplexities[complexity]!
+            if rangeDiff < 0 {
+                rangeDiff = abs(rangeDiff) / 20 //Approximation to value more distances to higher complexities
+            }
             if rangeDiff < closestDiff {
                 closestDiff = rangeDiff
                 closestTimeComplexity = complexity

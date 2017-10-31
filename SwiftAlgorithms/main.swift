@@ -11,7 +11,7 @@ import Foundation
 
 
 let shouldPrintDebugInfo = false
-let inputSize = 10000
+let inputSize = 1000
 let array = IntegersArrayFactory.makeRandomIntegersArray(size: inputSize)
 
 // MARK: - Shared functions
@@ -33,7 +33,13 @@ func executeQuickSort() {
     print("Sorted array is: \(quickSortResult.sortedArray)")
     let quickSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: quickSortResult.numberOfOperations, inputSize: inputSize)
     print("Time complexity of quick sort looks like \(quickSortTimeComplexity)")
+}
 
+func executeBubbleSort() {
+    let bubbleSortResult = BubbleSort().sort(array)
+    print("Sorted array is: \(bubbleSortResult.sortedArray)")
+    let bubbleSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: bubbleSortResult.numberOfOperations, inputSize: inputSize)
+    print("Time complexity of bubble sort looks like \(bubbleSortTimeComplexity)")
 }
 
 // MARK: - Execution
