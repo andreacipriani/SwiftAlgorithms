@@ -2,15 +2,15 @@ import Foundation
 
 final class InsertionSort: Sorting {
     
-    func sort<T: Comparable>(_ array: [T]) -> (sortedArray: [T], numberOfComparisons: Int)   {
+    func sort<T: Comparable>(_ array: [T]) -> (sortedArray: [T], numberOfOperations: Int)   {
 
         print("Executing insertion sort on array: \(array)")
         var array = array
         let lastElementIndex = array.count - 1
-        var numberOfComparisons = 0
+        var numberOfOperations = 0
 
         for index in 1...lastElementIndex {
-            numberOfComparisons += 1
+            numberOfOperations += 1
             let currentElement = array[index]
             printInDebug("\tConsidering \(currentElement) in \(array)")
 
@@ -21,7 +21,7 @@ final class InsertionSort: Sorting {
             printInDebug("\tComparing it with \(comparedElement)")
 
             while currentElement < comparedElement {
-                numberOfComparisons += 1
+                numberOfOperations += 1
                 array[j+1] = array[j]
                 printInDebug("\tCoping compared element \(comparedElement) to the right. The new array is: \(array)")
                 j -= 1
@@ -34,7 +34,7 @@ final class InsertionSort: Sorting {
             array[j+1] = currentElement
             printInDebug("\tWriting \(currentElement) to the smallest position of the moved elements: \(j+1). New array is \(array)")
         }
-        printInDebug("\tFinished to sort array of \(array.count) elements, with \(numberOfComparisons) comparisons")
-        return (array, numberOfComparisons)
+        printInDebug("\tFinished to sort array of \(array.count) elements, with \(numberOfOperations) comparisons")
+        return (array, numberOfOperations)
     }
 }
