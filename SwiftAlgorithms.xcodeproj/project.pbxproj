@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68160DC61FA8CCC7009E9D68 /* IntegersArrayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FED701FA8C88600C6DD74 /* IntegersArrayFactory.swift */; };
+		68160DC71FA8CCCA009E9D68 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FED6E1FA8C7B300C6DD74 /* Sorting.swift */; };
+		68160DC81FA8CCCC009E9D68 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FED6C1FA8C79800C6DD74 /* InsertionSort.swift */; };
+		68160DCB1FA8E44F009E9D68 /* TimeComplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68160DCA1FA8E44F009E9D68 /* TimeComplexity.swift */; };
 		686148461FA4DA460025BEDA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686148451FA4DA460025BEDA /* main.swift */; };
 		6861484E1FA605BA0025BEDA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6861484D1FA605BA0025BEDA /* Node.swift */; };
 		686148501FA605D50025BEDA /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6861484F1FA605D50025BEDA /* Edge.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		680FED6C1FA8C79800C6DD74 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		680FED6E1FA8C7B300C6DD74 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		680FED701FA8C88600C6DD74 /* IntegersArrayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegersArrayFactory.swift; sourceTree = "<group>"; };
+		68160DCA1FA8E44F009E9D68 /* TimeComplexity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeComplexity.swift; sourceTree = "<group>"; };
 		686148421FA4DA460025BEDA /* SwiftAlgorithms */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftAlgorithms; sourceTree = BUILT_PRODUCTS_DIR; };
 		686148451FA4DA460025BEDA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6861484D1FA605BA0025BEDA /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -52,6 +60,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		680FED691FA8C77400C6DD74 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				6861484C1FA605A30025BEDA /* Graph */,
+				686148591FA611300025BEDA /* BinaryTree */,
+			);
+			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		680FED6A1FA8C78600C6DD74 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				680FED6B1FA8C78C00C6DD74 /* Sorting */,
+			);
+			path = Algorithms;
+			sourceTree = "<group>";
+		};
+		680FED6B1FA8C78C00C6DD74 /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				680FED701FA8C88600C6DD74 /* IntegersArrayFactory.swift */,
+				680FED6E1FA8C7B300C6DD74 /* Sorting.swift */,
+				680FED6C1FA8C79800C6DD74 /* InsertionSort.swift */,
+			);
+			path = Sorting;
+			sourceTree = "<group>";
+		};
+		68160DC91FA8E43E009E9D68 /* TimeComplexity */ = {
+			isa = PBXGroup;
+			children = (
+				68160DCA1FA8E44F009E9D68 /* TimeComplexity.swift */,
+			);
+			path = TimeComplexity;
+			sourceTree = "<group>";
+		};
 		686148391FA4DA460025BEDA = {
 			isa = PBXGroup;
 			children = (
@@ -71,9 +114,10 @@
 		686148441FA4DA460025BEDA /* SwiftAlgorithms */ = {
 			isa = PBXGroup;
 			children = (
+				680FED691FA8C77400C6DD74 /* DataStructures */,
 				686148451FA4DA460025BEDA /* main.swift */,
-				6861484C1FA605A30025BEDA /* Graph */,
-				686148591FA611300025BEDA /* BinaryTree */,
+				68160DC91FA8E43E009E9D68 /* TimeComplexity */,
+				680FED6A1FA8C78600C6DD74 /* Algorithms */,
 			);
 			path = SwiftAlgorithms;
 			sourceTree = "<group>";
@@ -161,9 +205,13 @@
 				686148541FA606080025BEDA /* GraphFactory.swift in Sources */,
 				686148561FA610A70025BEDA /* BinaryTree.swift in Sources */,
 				686148461FA4DA460025BEDA /* main.swift in Sources */,
+				68160DCB1FA8E44F009E9D68 /* TimeComplexity.swift in Sources */,
+				68160DC71FA8CCCA009E9D68 /* Sorting.swift in Sources */,
 				6861485B1FA6114D0025BEDA /* BinaryTreeNode.swift in Sources */,
 				6861484E1FA605BA0025BEDA /* Node.swift in Sources */,
 				686148501FA605D50025BEDA /* Edge.swift in Sources */,
+				68160DC81FA8CCCC009E9D68 /* InsertionSort.swift in Sources */,
+				68160DC61FA8CCC7009E9D68 /* IntegersArrayFactory.swift in Sources */,
 				68ADABBE1FA6135600B56673 /* BinaryTreeFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

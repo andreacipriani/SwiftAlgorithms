@@ -26,7 +26,7 @@ class Graph {
         edges(of: node).forEach { edge in
             let destination = edge.destination
             if !destination.isVisited {
-                depthFirstVisitPreOrder(from: destination)
+                depthFirstVisit(from: destination)
             }
         }
     }
