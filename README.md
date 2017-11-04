@@ -8,6 +8,7 @@
   - depth first visit pre order
 - Sorting:
   - Quicksort
+  - Mergesort
   - InsertionSort
   - BubbleSort
 
