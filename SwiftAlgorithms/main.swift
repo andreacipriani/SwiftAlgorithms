@@ -11,7 +11,7 @@ import Foundation
 
 
 let shouldPrintDebugInfo = false
-let inputSize = 1000
+let inputSize = 10
 let array = IntegersArrayFactory.makeRandomIntegersArray(size: inputSize)
 
 // MARK: - Shared functions
@@ -24,28 +24,28 @@ func printInDebug(_ items: Any...) {
 func executeInsertionSort() {
     let insertionSortResult = InsertionSort().sort(array)
     print("Sorted array is: \(insertionSortResult.sortedArray)")
-    let insertionSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: insertionSortResult.numberOfOperations, inputSize: inputSize)
+    let insertionSortTimeComplexity = TimeComplexityCalculator.calculate(executedOperations: insertionSortResult.numberOfOperations, inputSize: inputSize)
     print("Time complexity of insertionsort looks like \(insertionSortTimeComplexity)")
 }
 
 func executeQuickSort() {
     let quickSortResult = QuickSort().sort(array)
     print("Sorted array is: \(quickSortResult.sortedArray)")
-    let quickSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: quickSortResult.numberOfOperations, inputSize: inputSize)
+    let quickSortTimeComplexity = TimeComplexityCalculator.calculate(executedOperations: quickSortResult.numberOfOperations, inputSize: inputSize)
     print("Time complexity of quicksort looks like \(quickSortTimeComplexity)")
 }
 
 func executeBubbleSort() {
     let bubbleSortResult = BubbleSort().sort(array)
     print("Sorted array is: \(bubbleSortResult.sortedArray)")
-    let bubbleSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: bubbleSortResult.numberOfOperations, inputSize: inputSize)
+    let bubbleSortTimeComplexity = TimeComplexityCalculator.calculate(executedOperations: bubbleSortResult.numberOfOperations, inputSize: inputSize)
     print("Time complexity of bubblesort looks like \(bubbleSortTimeComplexity)")
 }
 
 func executeMergeSort() {
     let mergeSortResult = MergeSort().sort(array)
     print("Sorted array is: \(mergeSortResult.sortedArray)")
-    let mergeSortTimeComplexity = TimeComplexityCalculator.calculate(nOperations: mergeSortResult.numberOfOperations, inputSize: inputSize)
+    let mergeSortTimeComplexity = TimeComplexityCalculator.calculate(executedOperations: mergeSortResult.numberOfOperations, inputSize: inputSize)
     print("Time complexity of mergesort looks like \(mergeSortTimeComplexity)")
 }
 

@@ -11,36 +11,40 @@ enum TimeComplexity {
 
 class TimeComplexityCalculator {
 
-    static func calculate(nOperations: Int, inputSize: Int) -> TimeComplexity {
+    static func calculate(executedOperations: Int, inputSize: Int) -> TimeComplexity {
         let logaritmicOperations = Int(log2(Double(inputSize)))
         let nLogNOperations = inputSize * logaritmicOperations
         let quadraticOperations = inputSize * inputSize
         let exponentialOperations = Int.max // It's ok for inputSize > 32
 
-        let operationForComplexities: [TimeComplexity: Int] = [.logaritmic: logaritmicOperations,
+        let nOperationsForComplexities: [TimeComplexity: Int] = [.logaritmic: logaritmicOperations,
                                                                .linear: inputSize,
                                                                .nLogN: nLogNOperations,
                                                                .quadratic: quadraticOperations,
                                                                .exponential: exponentialOperations]
-        return closestTimeComplexity(n: nOperations, operationForComplexities:operationForComplexities)
+        return closestTimeComplexity(executedOperations: executedOperations, nOperationsForComplexities: nOperationsForComplexities)
     }
 
-    static private func closestTimeComplexity(n: Int, operationForComplexities: [TimeComplexity: Int]) -> TimeComplexity {
+    static private func closestTimeComplexity(executedOperations: Int, nOperationsForComplexities: [TimeComplexity: Int]) -> TimeComplexity {
 
-        let firstRange = operationForComplexities.keys.first!
-        var closestTimeComplexity = firstRange
-        var closestDiff = operationForComplexities[firstRange]!
+        let executedOperationsDigitCount = executedOperations.digitCount
+        var closestDigitDiff = -1
+        var closestOperationsDiff: Int!
+        var closestTimeComplexity: TimeComplexity!
 
-        var rangeDiff: Int!
-
-        operationForComplexities.keys.forEach { complexity in
-            rangeDiff = n - operationForComplexities[complexity]!
-            if rangeDiff < 0 {
-                rangeDiff = abs(rangeDiff) / 20 //Approximation to value more distances to higher complexities
-            }
-            if rangeDiff < closestDiff {
-                closestDiff = rangeDiff
+        nOperationsForComplexities.keys.forEach { complexity in
+            let expectedOperations = nOperationsForComplexities[complexity]!
+            let digitDiff = abs(executedOperationsDigitCount - expectedOperations.digitCount)
+            let operationsDiff = abs(executedOperations - expectedOperations)
+            if digitDiff < closestDigitDiff || closestDigitDiff == -1 {
+                closestDigitDiff = digitDiff
+                closestOperationsDiff = operationsDiff
                 closestTimeComplexity = complexity
+            } else if digitDiff == closestDigitDiff {
+                if operationsDiff < closestOperationsDiff {
+                    closestOperationsDiff = operationsDiff
+                    closestTimeComplexity = complexity
+                }
             }
         }
         return closestTimeComplexity
